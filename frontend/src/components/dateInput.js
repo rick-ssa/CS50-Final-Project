@@ -96,13 +96,13 @@ export default function DateInput(props) {
     }
     return (
         
-        <div style={{marginTop:props.style.marginTop,marginLeft:props.style.marginLeft}}>
+        <div className='dateComponent' style={{marginTop:props.style.marginTop,marginLeft:props.style.marginLeft}}>
             <label>
                 {props.label}
             </label>
             <div 
                 className='inputDate' 
-                style={{borderColor:borderColor}}
+                style={{borderColor:borderColor,backgroundColor:props.style.backgroundColor}}
             >
                 <input 
                     id={props.ids.month}
@@ -113,9 +113,9 @@ export default function DateInput(props) {
                     value={month}
                     onFocus = {e=>selection(e)}
                     onChange={e=>passNumber('m',e)}  
-                    style= {{color:props.style.color}}  
+                    style= {{color:props.style.color,backgroundColor:props.style.backgroundColor}}  
                 />
-                <span style= {{color:props.style.color}}>/</span>
+                <span style= {{color:props.style.color,backgroundColor:props.style.backgroundColor}}>/</span>
                 <input 
                     id={props.ids.day}
                     maxLength='2'
@@ -125,9 +125,9 @@ export default function DateInput(props) {
                     value={day}
                     onFocus = {e=>selection(e)}
                     onChange={e=>passNumber('d',e)}
-                    style= {{color:props.style.color}}
+                    style= {{color:props.style.color,backgroundColor:props.style.backgroundColor}}
                 />
-                <span style= {{color:props.style.color}}>/</span>
+                <span style= {{color:props.style.color,backgroundColor:props.style.backgroundColor}}>/</span>
                 <input 
                     id={props.ids.year}
                     maxLength='4'
@@ -137,7 +137,7 @@ export default function DateInput(props) {
                     value={year}
                     onChange = {e=>passNumber('y',e)}
                     onFocus = {e=>selection(e)}
-                    style= {{color:props.style.color}}
+                    style= {{color:props.style.color,backgroundColor:props.style.backgroundColor}}
                 />
             </div>
         </div>
