@@ -13,7 +13,9 @@ export default function DateInput(props) {
         if(validDateYear(year) && validDateMonth(month) && validDateDay(day,month,year)){
             let d = new Date(year,month-1,day)
             props.getDate(d)
-        } 
+        } else {
+            props.getDate('')
+        }
         
     })
     function isNumber(n) {
@@ -22,23 +24,25 @@ export default function DateInput(props) {
 
     function validDateYear(year){
         if(!isNumber(year)){
-            setBorderColor('red')
+            setBorderColor(props.style.colorError)
             return false
         }
+        setBorderColor(props.style.borderColor)
         return true
     }
 
     function validDateMonth(month){
         if(!isNumber(month) || month<1 || month>12){
-            setBorderColor('red')
+            setBorderColor(props.style.colorError)
             return false
         }
+        setBorderColor(props.style.borderColor)
         return true
     }
 
     function validDateDay(day, month, year){
         if(!isNumber(day)){
-            setBorderColor('red')
+            setBorderColor(props.style.colorError)
             return false
         }
 
@@ -49,9 +53,10 @@ export default function DateInput(props) {
         }
 
         if(day<1 || day>maxDay[month-1]){
-            setBorderColor('red')
+            setBorderColor(props.style.colorError)
             return false;
         }
+        setBorderColor(props.style.borderColor)
         return true
     }
 
@@ -60,21 +65,21 @@ export default function DateInput(props) {
        
         switch(type){
             case 'y':
-                if(validDateYear(e.target.value)){
+                if(validDateYear(e.target.value) || e.target.value===''){
                     setYear(e.target.value);            
                 } else {
                     e.preventDefault()
                 }
                 break;
             case 'm':
-                if(validDateMonth(e.target.value)){
+                if(validDateMonth(e.target.value) || e.target.value===''){
                     setMonth(e.target.value);
                 } else {
                     e.preventDefault()
                 }
                 break;
             case 'd':
-                if(validDateDay(e.target.value,month,year)){
+                if(validDateDay(e.target.value,month,year) || e.target.value===''){
                     setDay(e.target.value);
                 } else {
                     e.preventDefault()

@@ -5,7 +5,7 @@ import DateInput from './components/dateInput'
 function App() {
 
   const getDate = (d)=>{
-    document.getElementById('date').innerHTML = d
+    document.getElementById('date').innerHTML = d==='' ? d : d.getTime()
   }
 
   const style ={
@@ -13,7 +13,17 @@ function App() {
     marginTop:"10px",
     marginLeft:"10px",
     marginBottom:"10px",
-    borderColor:"lightblue"
+    borderColor:"lightblue",
+    colorError:"red",
+  }
+
+  const style2 ={
+    color:"violet",
+    marginTop:"10px",
+    marginLeft:"10px",
+    marginBottom:"10px",
+    borderColor:"darkgreen",
+    colorError:"gold",
   }
 
   
@@ -25,7 +35,16 @@ function App() {
         style ={style} 
         ids={{day:'day1',month:'month1',year:'year1'}} 
         getDate={getDate} 
-        color='blue'
+        dayDefault={(new Date()).getDate()}
+        monthDefault={(new Date()).getMonth() + 1}
+        yearDefault={(new Date()).getFullYear()}
+      />
+
+<DateInput 
+        label='entrada' 
+        style ={style2} 
+        ids={{day:'day2',month:'month2',year:'year2'}} 
+        getDate={getDate} 
         dayDefault={(new Date()).getDate()}
         monthDefault={(new Date()).getMonth() + 1}
         yearDefault={(new Date()).getFullYear()}
