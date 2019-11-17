@@ -21,10 +21,11 @@ function App() {
       <div id='map' style={{width:'100vw', height:'100vh'}}>
         <div id='menu'>
           <input type='date'  onChange={handleToogleButton}/>
-          <select >
+          <select name='crimanal_events'>
             <option name='robbery'>Robbery</option>
-            <option name='steal'>Steal</option>
+            <option name='theft'>Theft</option>
             <option name='murder'>Murder</option>
+            <option name='kidnapping'>Kidnapping</option>
           </select>
           <ToogleButton value='Mark' enable={enable} className={enable}/>
         </div>
