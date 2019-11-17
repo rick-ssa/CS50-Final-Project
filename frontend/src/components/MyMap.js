@@ -12,8 +12,8 @@ function MyMapp(props) {
       <GoogleMap
         defaultZoom={12}
         defaultCenter={{lat: -12.964150, lng: -38.505820}}
-        onClick={props.onMapClick}
-      >
+        onClick={(obj)=>{props.onMapClick(obj.latLng.lat() + '\n' + obj.latLng.lng())}}
+       >
         <Marker 
           key={1}
           position={{lat:nlat , lng:nlng}}
@@ -23,7 +23,7 @@ function MyMapp(props) {
               scaledSize:new window.google.maps.Size(32,32)
             }}
         />
-
+        
         <Marker 
           key={2}
           position={{lat:-12.92500 , lng:nlng}}
