@@ -29,7 +29,7 @@ function App() {
           </select>
           <ToogleButton value='Mark' enable={enable} className={enable}/>
         </div>
-        <MyMapp />
+        <MyMapp onMapClick={()=>alert('maps')} onMarkerClick={(lat,lng)=>alert(lat + ' ' + lng)}/>
       </div>
     </div>
   )
