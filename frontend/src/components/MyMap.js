@@ -11,14 +11,14 @@ function MyMapp(props) {
     let marks = ()=>{
       const event = [THEFT_ICON,KIDNAPPING_ICON,ROBBERY_ICON,MURDER_ICON]
       let m = []
-
-        for(let i=0; i<12; i++){
+        console.log(props.points.length)
+        for(let i=0; i<props.points.length; i++){
           m.push(<Marker 
                 key={i+1}
-                position={{lat:nlat , lng:nlng +(i*0.001)}}
-                onClick={()=>{props.onMarkerClick(nlat ,nlng +(i*0.001))}}
+                position={{lat:props.points[i].lat , lng:props.points[i].lng}}
+                //onClick={()=>{props.onMarkerClick(nlat ,nlng +(i*0.001))}}
                 icon={{
-                  url:event[i%4],
+                  url:event[props.points[i].icon],
                   scaledSize:new window.google.maps.Size(24,24)
                 }}
               />)
@@ -30,7 +30,7 @@ function MyMapp(props) {
       <GoogleMap
         defaultZoom={12}
         defaultCenter={{lat: -12.964150, lng: -38.505820}}
-        onClick={(obj)=>{props.onMapClick(obj.latLng.lat() + '\n' + obj.latLng.lng())}}
+        onClick={(obj)=>{props.onMapClick([obj.latLng.lat(),obj.latLng.lng()])}}
        >
         {marks()}
       </GoogleMap>
