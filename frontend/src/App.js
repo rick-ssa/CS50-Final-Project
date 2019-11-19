@@ -22,10 +22,10 @@ function App() {
         <div id='menu'>
           <input type='date'  onChange={handleToogleButton}/>
           <select name='crimanal_events'>
-            <option name='robbery'>Robbery</option>
-            <option name='theft'>Theft</option>
-            <option name='murder'>Murder</option>
-            <option name='kidnapping'>Kidnapping</option>
+            <option name='robbery' value={2}>Robbery</option>
+            <option name='theft' value={0}>Theft</option>
+            <option name='murder' value={3}>Murder</option>
+            <option name='kidnapping' value={1}>Kidnapping</option>
           </select>
           <ToogleButton value='Mark' enable={enable} className={enable}/>
         </div>

@@ -8,31 +8,31 @@ function MyMapp(props) {
   const [nlat,setLat]=useState(-12.914730)
   const [nlng,setLng]=useState(-38.493570)
   function Map(){
+    let marks = ()=>{
+      const event = [THEFT_ICON,KIDNAPPING_ICON,ROBBERY_ICON,MURDER_ICON]
+      let m = []
+
+        for(let i=0; i<12; i++){
+          m.push(<Marker 
+                key={i+1}
+                position={{lat:nlat , lng:nlng +(i*0.001)}}
+                onClick={()=>{props.onMarkerClick(nlat ,nlng +(i*0.001))}}
+                icon={{
+                  url:event[i%4],
+                  scaledSize:new window.google.maps.Size(24,24)
+                }}
+              />)
+        }
+      return m
+    }
+
     return(
       <GoogleMap
         defaultZoom={12}
         defaultCenter={{lat: -12.964150, lng: -38.505820}}
         onClick={(obj)=>{props.onMapClick(obj.latLng.lat() + '\n' + obj.latLng.lng())}}
        >
-        <Marker 
-          key={1}
-          position={{lat:nlat , lng:nlng}}
-          onClick={()=>{props.onMarkerClick(nlat,nlng)}}
-          icon={{
-              url:KIDNAPPING_ICON,
-              scaledSize:new window.google.maps.Size(32,32)
-            }}
-        />
-        
-        <Marker 
-          key={2}
-          position={{lat:-12.92500 , lng:nlng}}
-          onClick={()=>{props.onMarkerClick(nlat,nlng)}}
-          icon={{
-              url:MURDER_ICON,
-              scaledSize:new window.google.maps.Size(32,32)
-            }}
-        />
+        {marks()}
       </GoogleMap>
     )
   }
