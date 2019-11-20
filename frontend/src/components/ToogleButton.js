@@ -19,17 +19,22 @@ export default function ToogleButton(props) {
             if(toogled===false){
                 setToogled(true)
                 setClas('toogleOn')
+                props.onTgl(true)
             } else {
                 setToogled(false)
                 setClas('toogleOff')
+                props.onTgl(false)
             }
         }
+        
     }
 
     return (
         <button 
             className={clas}
-            onClick={handleClass} 
+            onClick={()=>{
+                handleClass()
+            }}
         >
             {props.value}
         </button>

@@ -5,27 +5,26 @@ const KIDNAPPING_ICON = 'https://cdn2.iconfinder.com/data/icons/criminal-robber-
 const ROBBERY_ICON = 'https://cdn3.iconfinder.com/data/icons/crime-and-criminal-part-1-of-3/312/crime-criminal-002-512.png'
 const MURDER_ICON = 'https://cdn1.iconfinder.com/data/icons/accident-1/100/People-10-512.png'
 function MyMapp(props) {
-  const [nlat,setLat]=useState(-12.914730)
-  const [nlng,setLng]=useState(-38.493570)
-  function Map(){
-    let marks = ()=>{
-      const event = [THEFT_ICON,KIDNAPPING_ICON,ROBBERY_ICON,MURDER_ICON]
-      let m = []
-        console.log(props.points.length)
-        for(let i=0; i<props.points.length; i++){
-          m.push(<Marker 
-                key={i+1}
-                position={{lat:props.points[i].lat , lng:props.points[i].lng}}
-                //onClick={()=>{props.onMarkerClick(nlat ,nlng +(i*0.001))}}
-                icon={{
-                  url:event[props.points[i].icon],
-                  scaledSize:new window.google.maps.Size(24,24)
-                }}
-              />)
-        }
-      return m
-    }
 
+  let marks = ()=>{
+    const event = [THEFT_ICON,KIDNAPPING_ICON,ROBBERY_ICON,MURDER_ICON]
+    let m = []
+      console.log(props.points.length)
+      for(let i=0; i<props.points.length; i++){
+        m.push(<Marker 
+              key={i+1}
+              position={{lat:props.points[i].lat , lng:props.points[i].lng}}
+              //onClick={()=>{props.onMarkerClick(nlat ,nlng +(i*0.001))}}
+              icon={{
+                url:event[props.points[i].icon],
+                scaledSize:new window.google.maps.Size(24,24)
+              }}
+            />)
+      }
+    return m
+  }
+
+  function Map(){
     return(
       <GoogleMap
         defaultZoom={12}
