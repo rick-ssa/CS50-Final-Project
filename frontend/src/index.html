@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>Criminal Events</title>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+
+           <label>Event occurred in:</label>
+           <input id='dateEvent' type='date'/>
+
+           <label>Pick one Event:</label>
+
+           <div id="murder" class="event disabled">
+               <div class="nameEvent" style="animation-delay: 0s;">Murder</div>
+               <div class="markEvent" style="background-image: url('../assets/murder.png');animation-delay: 0s;"></div>
+           </div>
+           <div id="kidnapping" class="event disabled">
+               <div class="nameEvent" style="animation-delay: 0.1s;">Kidnapping</div>
+               <div class="markEvent" style="background-image: url('../assets/kidnapping.png');animation-delay: 0.1s;"></div>
+           </div>
+           <div id="theft" class="event disabled">
+               <div class="nameEvent" style="animation-delay: 0.2s;">Theft</div>
+               <div class="markEvent" style="background-image: url('../assets/theft.png');animation-delay: 0.2s;"></div>
+           </div>
+           <div id="robbery" class="event disabled">
+               <div class="nameEvent" style="animation-delay: 0.3s;">Robbery</div>
+               <div class="markEvent" style="background-image: url('../assets/robbery.png');animation-delay: 0.3s;"></div>
+           </div>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+    <script src="js/initializeMap.js"></script> 
+    
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-evz73n0NIWqzTB-TLHPKlvcLZ9rMrTE&callback=initMap"
+  type="text/javascript"></script>
+</body>
+</html>
