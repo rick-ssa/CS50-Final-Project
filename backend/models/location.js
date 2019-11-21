@@ -6,7 +6,8 @@ const createTable = function(){
     let sqlLocations = "CREATE TABLE IF NOT EXISTS locations ("
     sqlLocations+= "lat REAL NOT NULL,"
     sqlLocations+= "lng REAL NOT NULL,"
-    sqlLocations+= "dateEvent REAL NOT NULL)"
+    sqlLocations+= "dateEvent REAL NOT NULL,"
+    sqlLocations+= "event TEXT NOT NULL)"
     //==============================================================
 
     db.run(sqlLocations)

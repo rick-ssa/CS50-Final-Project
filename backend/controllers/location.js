@@ -6,15 +6,16 @@ module.exports = {
     
         const sqlite3 = require('sqlite3').verbose();
         const db = new sqlite3.Database("./database/database.db")
-        const sql = `SELECT lat, lng, dateEvent as date FROM locations WHERE dateEvent BETWEEN ? AND ?`
+        const sql = `SELECT lat, lng, dateEvent as date, event FROM locations WHERE dateEvent BETWEEN ? AND ?`
 
         db.all(sql,[dateStart,dateEnd],function(err,rows){
+            console.log(dateStart)
             if(err){
                 res.status(400);
             }
 
             rows.forEach(row=>{
-                data.push({lat: row.lat, lng: row.lng, dateEvent: (new Date(row.date)).getMinutes()})
+                data.push({lat: row.lat, lng: row.lng, dateEvent: row.date, event: row.event})
             })
             
             return res.json(data)
@@ -28,10 +29,10 @@ module.exports = {
     store(req,res) {
         const sqlite3 = require('sqlite3').verbose();
         const db = new sqlite3.Database("./database/database.db")
-        const sql = `INSERT INTO locations(lat,lng,dateEvent) VALUES (?,?,?)`
+        const sql = `INSERT INTO locations(lat,lng,dateEvent,event) VALUES (?,?,?,?)`
         const lc = req.body
 
-        db.run(sql,[lc.lat,lc.lng,lc.dateEvent],function(err){
+        db.run(sql,[lc.lat,lc.lng,lc.dateEvent,lc.event],function(err){
             if (err) {
                 return res.status(400)
             }
