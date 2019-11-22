@@ -9,7 +9,6 @@ var locations=[]
 axios.get(`http://192.168.0.101:3333/local?dateStart=${dayStartMilli}&dateEnd=${todayMilli}`)
 .then(response=>{
     locations = response.data;
-    console.log(response.data)
 })
 
 function initMap() {
@@ -29,6 +28,7 @@ function initMap() {
             
             if(!bts[0].classList.contains('disabled')){
                 var dt = new Date(eventDate.value)
+                dt.setUTCHours(23)
                 dt = dt.getFullYear() + '-' + (dt.getMonth()+1) + '-' + dt.getDate()
                 var contentString = `<div id='content'><div id='ev'>${urlIcon.replace('../assets/','').replace('png','')}</div><div id='dt'>${dt}</div></div>`
                 var infoWindow = new google.maps.InfoWindow({content:contentString})
@@ -43,15 +43,14 @@ function initMap() {
                 markerCluster.markers_.push(
                     mkr
                 )
-                
-                
-                
 
                 map.setCenter({lat:map.getCenter().lat() + 0.00001, lng:map.getCenter().lng()})
+                let d = new Date(eventDate.value)
+                d.setUTCHours(23)
                 axios.post('http://192.168.0.101:3333/local',{
                     lat:e.latLng.lat(),
                     lng:e.latLng.lng(),
-                    dateEvent:new Date(eventDate.value).getTime(),
+                    dateEvent:d.getTime(),
                     event:urlIcon.replace('../assets/','').replace('.png',''),
                 })
                 .then(response=>console.log(response))
@@ -97,11 +96,11 @@ let bts = document.getElementsByClassName('event')
 for(let i=0; i<4; i++) {
     bts[i].addEventListener("click",()=>{
         if(bts[i].classList.contains('enabled')){
-        urlIcon = `../assets/${bts[i].id}.png`
-        desactiveAllBts()
-        bts[i].classList.add('event-active')
-        enabled(true)
-        bts[i].classList.remove('enabled')
+            urlIcon = `../assets/${bts[i].id}.png`
+            desactiveAllBts()
+            bts[i].classList.add('event-active')
+            enabled(true)
+            bts[i].classList.remove('enabled')
         }
     })
 }
@@ -134,6 +133,9 @@ function enabled(isEnabled) {
 
 eventDate.addEventListener("change",(e)=>{
     enabled(true);
+    bts[0].classList.add('event-active')
+    bts[0].classList.remove('enabled')
+    urlIcon='../assets/murder.png'
 })
 
 

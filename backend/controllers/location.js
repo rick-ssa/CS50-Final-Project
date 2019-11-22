@@ -9,7 +9,6 @@ module.exports = {
         const sql = `SELECT lat, lng, dateEvent as date, event FROM locations WHERE dateEvent BETWEEN ? AND ?`
 
         db.all(sql,[dateStart,dateEnd],function(err,rows){
-            console.log(req.query)
             if(err){
                 res.status(400);
             }
