@@ -19,6 +19,19 @@
     background-color:lightblue;
 }
 
+#ev {
+    text-transform: uppercase;
+    font-weight:bold;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom:3px;
+}
+
+#dt {
+    color:red;
+    text-align: center;
+}
+
 .markEvent {
     background-size:35px 35px;
     width:35px;
