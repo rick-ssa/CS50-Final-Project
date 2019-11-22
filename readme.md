@@ -15,7 +15,7 @@ It has an aside menu controler with:
 - Four kind of events that should be clicked to select the specific event.
 
 ### The Map
-After choose a date and event, the user must click on the map to mark a event on it.
+After choosing a date and event, the user must click on the map to mark a event on it.
 
 ### The Events
 The map will show automaticly the events occurred in the past **30 days**.
